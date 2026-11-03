@@ -9,6 +9,7 @@ open class Role(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_role")
     open var idRole: Long? = null,
+
     @Column(name = "nom", nullable = false, unique = true, length = 50)
     open var nom: String = ""
 )
