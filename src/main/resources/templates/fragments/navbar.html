@@ -41,7 +41,8 @@
                         </a>
                     </li>
                     <!-- Groupe Administration -->
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown"
+                        th:if="${utilisateurActif != null and utilisateurActif.role.nom == 'ROLE_ADMIN'}">
                         <a class="nav-link dropdown-toggle"
                            href="#"
                            th:classappend="${activePage != null and activePage.startsWith('admin/')} ? 'active' : ''"

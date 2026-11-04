@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 @Controller
 class UtilisateursController {
     @GetMapping("/admin/utilisateurs")
-    fun mesTaches(): String {
+    fun mesUtilisateur(): String {
         return "admin/utilisateurs"
     }
 }

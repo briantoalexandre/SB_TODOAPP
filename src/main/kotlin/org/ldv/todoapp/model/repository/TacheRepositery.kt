@@ -16,4 +16,5 @@ interface TacheRepository: JpaRepository<Tache, Long> {
             """)
     fun findAllAvecUtilisateur(): List<Tache>
 
+
 }
