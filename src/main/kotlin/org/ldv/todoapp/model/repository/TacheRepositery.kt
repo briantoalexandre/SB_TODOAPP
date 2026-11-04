@@ -12,7 +12,7 @@ interface TacheRepository: JpaRepository<Tache, Long> {
             SELECT t
             FROM Tache t
             JOIN FETCH t.utilisateur
-            ORDER BY t.dateCreation DESC
+            ORDER BY t.dateCreation ASC
             """)
     fun findAllAvecUtilisateur(): List<Tache>
 

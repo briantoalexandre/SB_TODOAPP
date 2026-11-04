@@ -35,6 +35,7 @@ class DataInitializer(
             Role(nom = "ROLE_ADMIN")
         )
 
+        // 2. Création des utilisateurs
         val alice = utilisateurRepository.save(
             Utilisateur(
                 nom = "Martin",
@@ -59,6 +60,7 @@ class DataInitializer(
                     role = roleUser
                 )
         )
+
         val admin = utilisateurRepository.save(
             Utilisateur(
                 nom = "Admin",

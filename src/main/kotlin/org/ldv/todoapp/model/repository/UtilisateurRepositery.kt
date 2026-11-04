@@ -12,7 +12,7 @@ interface UtilisateurRepository : JpaRepository<Utilisateur, Long> {
                     SELECT u
                     FROM Utilisateur u
                     JOIN FETCH u.role
-                    ORDER BY u.nom, u.prenom
+                    ORDER BY u.nom, u.prenom ASC
                     """)
     fun findAllAvecRole(): List<Utilisateur>
 
