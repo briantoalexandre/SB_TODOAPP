@@ -9,36 +9,48 @@
                      width="40"
                      height="40">
             </a>
+
             <!-- Barre de navigation -->
             <div th:replace="~{fragments/navbar :: navbar(${activePage})}"></div>
-
-                <!-- Liste déroulante des utilisateurs -->
-                <div class="ms-auto d-flex align-items-center gap-2">
-
-                    <label for="utilisateurId" class="text-nowrap">
-                        <i class="bi bi-key-fill"></i>
-                        Utilisateur :
-                    </label>
-
-                    <select id="utilisateurId"
-                            name="utilisateurId"
-                            class="form-select form-select-sm">
-
-                        <option value="" disabled
-                                th:selected="${utilisateurActif == null}">
-                            Choisir un utilisateur
-                        </option>
-
-                        <option th:each="utilisateur : ${utilisateurs}"
-                                th:value="${utilisateur.idUtilisateur}"
-                                th:text="${utilisateur.prenom + ' ' + utilisateur.nom}"
-                                th:selected="${utilisateurActif != null and utilisateur.idUtilisateur == utilisateurActif.idUtilisateur}">
-                        </option>
-
-                    </select>
-                </div>
-
-            </div>
+            <!-- Formulaire de sélection de l'utilisateur -->
+            <form th:action="@{/session/utilisateur}"
+                  method="post"
+                  class="ms-auto d-flex align-items-center gap-2">
+                <!-- Label associé à la liste des utilisateurs -->
+                <label for="utilisateurId" class="text-nowrap">
+                    <i class="bi bi-key-fill"></i>
+                    Utilisateur :
+                </label>
+                <!-- Liste de sélection des utilisateurs -->
+                <select id="utilisateurId"
+                        name="utilisateurId"
+                        class="form-select form-select-sm"
+                        onchange="this.form.requestSubmit()">
+                    <option value="" disabled
+                            th:selected="${utilisateurActif == null}">
+                        Choisir un utilisateur
+                    </option>
+                    <option th:each="utilisateur : ${utilisateurs}"
+                            th:value="${utilisateur.idUtilisateur}"
+                            th:text="${utilisateur.prenom + ' ' + utilisateur.nom}"
+                            th:selected="${utilisateurActif != null and utilisateur.idUtilisateur == utilisateurActif.idUtilisateur}">
+                    </option>
+                </select>
+            </form>
+            <!-- Groupe Administration
+            <li class="nav-item dropdown"
+                th:if="${utilisateurActif != null and utilisateurActif.role.nom == 'ROLE_ADMIN'}">
+                <a class="nav-link dropdown-toggle"
+                   href="#"
+                   th:classappend="${activePage != null and activePage.startsWith('admin/')} ? 'active' : ''"
+                   id="navbarAdmin"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <i class="bi bi-gear"></i>
+                    Administration
+                </a>  -->
         </div>
+
     </header>
 </div>
